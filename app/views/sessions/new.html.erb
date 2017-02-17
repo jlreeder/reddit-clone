@@ -1,0 +1,13 @@
+<form action="/session" method="post">
+  <input type="hidden" name="_method" value="post">
+  <%= render "shared/auth_token" %>
+  <div>
+    <label for="session[username]">Username: </label>
+    <input type="text" name="session[username]">
+  </div>
+  <div>
+    <label for="session[password]">Password: </label>
+    <input type="password" name="session[password]">
+  </div>
+  <%= button_to 'Sign In' %>
+</form>
