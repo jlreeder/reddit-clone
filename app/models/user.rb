@@ -11,14 +11,21 @@
 #
 
 class User < ActiveRecord::Base
-  after_initialization :ensure_session_token
+  attr_reader :password
+
+  after_initialize :ensure_session_token
 
   validates :username, :password_digest, :session_token, presence: true
   validates :username, :session_token, uniqueness: true
-  validates :password, length: {miminum: 8, allow_nil: true}
+  validates :password, length: {minimum: 8, allow_nil: true}
 
   def self.generate_session_token
     SecureRandom::urlsafe_base64
+  end
+
+  def self.find_by_credentials(username, password)
+    user = User.find_by(username: username)
+    return user if user.is_password?(password)
   end
 
   def password=(password)
