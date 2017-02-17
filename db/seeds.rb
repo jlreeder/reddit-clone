@@ -8,9 +8,15 @@
 
 User.destroy_all
 Sub.destroy_all
+Post.destroy_all
 
 u1 = User.create!(username: "Parzival", password:"12345678")
 u2 = User.create!(username: "Art3mis", password:"12345678")
 u3 = User.create!(username: "Aech", password:"12345678")
 
-s1 = Sub.create(title: "ReadyPlayerOne", description: "an awesome book", moderator_id: u1.id)
+s1 = Sub.create!(title: "ReadyPlayerOne", description: "an awesome book", moderator_id: u1.id)
+
+p1 = Post.create!(title: "Halliday Hunt",
+                  content: "The Halliday Hunt is on!",
+                  sub_id: s1.id,
+                  author_id: u1.id)

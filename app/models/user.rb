@@ -23,6 +23,10 @@ class User < ActiveRecord::Base
     class_name: 'Sub',
     foreign_key: :moderator_id
 
+  has_many :authored_posts,
+    class_name: 'Post',
+    foreign_key: :author_id
+
   def self.generate_session_token
     SecureRandom::urlsafe_base64
   end
