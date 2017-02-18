@@ -23,5 +23,6 @@ s2 = Sub.create!(title: "MysteryHouse",
 p1 = Post.create!(title: "Halliday Hunt",
                   content: "The Halliday Hunt is on!",
                   author_id: u1.id)
+                  #sub_ids: [s1.id, s2.id])
 
-p1.sub_ids = [s1.id, s2.id]
+ p1.sub_ids = [s1.id, s2.id]
