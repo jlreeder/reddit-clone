@@ -19,11 +19,11 @@ class User < ActiveRecord::Base
   validates :username, :session_token, uniqueness: true
   validates :password, length: {minimum: 8, allow_nil: true}
 
-  has_many :moderated_subs,
+  has_many :moderated_subs, dependent: :destroy,
     class_name: 'Sub',
     foreign_key: :moderator_id
 
-  has_many :authored_posts,
+  has_many :authored_posts, dependent: :destroy,
     class_name: 'Post',
     foreign_key: :author_id
 
