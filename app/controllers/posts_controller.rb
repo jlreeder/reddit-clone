@@ -42,7 +42,7 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title,
                                  :url,
                                  :content,
-                                 :sub_id,
+                                 :sub_ids = [],
                                  :author_id)
   end
 
